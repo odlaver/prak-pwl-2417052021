@@ -14,6 +14,13 @@ class UserModel extends Model
         'kelas_id',
     ];
 
+    public function getUser()
+    {
+        return $this->join('kelas', 'user.kelas_id', '=', 'kelas.id')
+                    ->select('user.*', 'kelas.nama_kelas as nama_kelas')
+                    ->get();
+    }
+
     public function kelas()
     {
         return $this->belongsTo(Kelas::class, 'kelas_id');
