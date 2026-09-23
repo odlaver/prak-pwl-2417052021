@@ -1,25 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Daftar Pengguna</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nama</th>
-                <th>NPM</th>
-                <th>Kelas</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($users as $user)
-                <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->nama }}</td>
-                    <td>{{ $user->npm }}</td>
-                    <td>{{ $user->nama_kelas }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+
+    <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+            <h1 class="text-2xl font-semibold">Daftar Pengguna</h1>
+            <p class="muted mt-1 text-sm">{{ count($users) }} data tersimpan.</p>
+        </div>
+
+        <a href="{{ route('user.create') }}" class="btn-primary">Tambah pengguna</a>
+    </div>
+
+    <x-user-table :users="$users" />
 @endsection

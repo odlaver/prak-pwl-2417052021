@@ -20,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'List User',
+            'title' => 'Daftar Pengguna',
             'users' => $this->userModel->getUser(),
         ];
 
@@ -30,7 +30,7 @@ class UserController extends Controller
     public function create()
     {
         $data = [
-            'title' => 'Create User',
+            'title' => 'Tambah Pengguna',
             'kelas' => $this->kelasModel->getKelas(),
         ];
 
@@ -39,11 +39,17 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $data = [
-            'nama' => $request->input('nama'),
-            'npm' => $request->input('npm'),
-            'kelas_id' => $request->input('kelas_id'),
-        ];
+        $data = $request->validate([
+            'nama' => ['required', 'string', 'max:255'],
+            'npm' => ['required', 'string', 'max:20', 'unique:user,npm'],
+            'kelas_id' => ['required', 'exists:kelas,id'],
+        ], [
+            'nama.required' => 'Nama wajib diisi.',
+            'npm.required' => 'NPM wajib diisi.',
+            'npm.unique' => 'NPM tersebut sudah terdaftar.',
+            'kelas_id.required' => 'Kelas wajib dipilih.',
+            'kelas_id.exists' => 'Kelas yang dipilih tidak tersedia.',
+        ]);
 
         $this->userModel->create($data);
 

@@ -12,3 +12,59 @@
     --shadow-glow: 0 0 24px -8px rgb(249 115 22 / 0.55);
     --shadow-glow-lg: 0 0 90px 10px rgb(249 115 22 / 0.35);
 }
+
+@utility muted {
+    @apply text-[#5c5c57] dark:text-[#a3a3a0];
+}
+
+@utility card {
+    @apply rounded-lg bg-white shadow-glow ring-1 ring-orange-200 dark:bg-[#1c1410] dark:ring-orange-500/30;
+}
+
+@utility rule {
+    @apply border-orange-100 dark:border-orange-500/20;
+}
+
+@utility focus-ring {
+    @apply focus-visible:ring-2 focus-visible:ring-orange-700 focus-visible:outline-none dark:focus-visible:ring-orange-400;
+}
+
+@utility nav-link {
+    @apply focus-ring flex min-h-11 items-center rounded px-3 text-sm;
+}
+
+@utility nav-link-on {
+    @apply font-semibold text-orange-800 dark:text-orange-400;
+}
+
+@utility btn {
+    @apply focus-ring inline-flex min-h-11 items-center justify-center rounded px-4 text-sm font-semibold;
+}
+
+@utility btn-primary {
+    @apply btn bg-orange-700 text-white shadow-glow hover:bg-orange-800 focus-visible:ring-offset-2;
+}
+
+@utility btn-ghost {
+    @apply btn muted font-normal;
+}
+
+@utility field-label {
+    @apply block text-sm font-medium;
+}
+
+@utility field {
+    @apply mt-1 block min-h-11 w-full rounded border border-[#8a8a85] bg-transparent px-3 text-base;
+    @apply focus:border-orange-700 focus:ring-1 focus:ring-orange-700 focus:outline-none;
+    @apply dark:focus:border-orange-400 dark:focus:ring-orange-400;
+    @apply dark:[&>option]:bg-[#1c1410] dark:[&>option]:text-[#EDEDEC];
+}
+
+@utility page {
+    @apply flex min-h-screen flex-col bg-[#FDFDFC] font-sans text-[#1b1b18] antialiased;
+    @apply [color-scheme:light] dark:bg-[#0a0a0a] dark:text-[#EDEDEC] dark:[color-scheme:dark];
+}
+
+@utility col-head {
+    @apply pb-2 text-xs font-medium tracking-wide text-orange-800 uppercase dark:text-orange-400;
+}
