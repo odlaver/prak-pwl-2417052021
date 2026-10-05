@@ -21,6 +21,9 @@
                     <dd class="muted mt-1 text-sm">
                         {{ $user->npm }}, kelas {{ $user->nama_kelas }}
                     </dd>
+                    <dd class="mt-3">
+                        <x-user-actions :user="$user" />
+                    </dd>
                 </div>
             @endforeach
         </dl>
@@ -31,6 +34,7 @@
                     <th scope="col" class="col-head">Nama</th>
                     <th scope="col" class="col-head">NPM</th>
                     <th scope="col" class="col-head">Kelas</th>
+                    <th scope="col" class="col-head">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,6 +43,9 @@
                         <td class="py-3 font-medium">{{ $user->nama }}</td>
                         <td class="muted py-3">{{ $user->npm }}</td>
                         <td class="muted py-3">{{ $user->nama_kelas }}</td>
+                        <td class="py-3">
+                            <x-user-actions :user="$user" />
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
